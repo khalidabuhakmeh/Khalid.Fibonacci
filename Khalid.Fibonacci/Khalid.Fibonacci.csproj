@@ -5,6 +5,19 @@
         <Nullable>enable</Nullable>
         <RootNamespace>Khalid.Fibonacci</RootNamespace>
         <LangVersion>Latest</LangVersion>
+        <!-- NuGet Package Information -->
+        <PackageId>Khalid.Fibonacci</PackageId>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageTags>Fibonnaci</PackageTags>
+        <IsPackable>true</IsPackable>
+        <Description>Iterator for Fibonacci sequence</Description>
     </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MinVer" Version="2.5.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
 
 </Project>
