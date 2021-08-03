@@ -7,13 +7,18 @@
         <LangVersion>Latest</LangVersion>
         <!-- NuGet Package Information -->
         <PackageId>Khalid.Fibonacci</PackageId>
+        <PackageProjectUrl>https://github.com/khalidabuhakmeh/Khalid.Fibonacci</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageTags>Fibonnaci</PackageTags>
         <IsPackable>true</IsPackable>
-        <Description>Iterator for Fibonacci sequence</Description>
+        <Description>Generates an iterator for Fibonacci sequence</Description>
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <PackageReference Include="MinVer" Version="2.5.0">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

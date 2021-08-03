@@ -4,6 +4,10 @@ namespace Khalid.Fibonacci
 {
     public static class Series
     {
+        /// <summary>
+        /// Generate an Fibonacci iterator that can be used with LINQ statements.
+        /// </summary>
+        /// <returns></returns>
         public static IEnumerable<int> Next()
         {
             var previous = -1;
