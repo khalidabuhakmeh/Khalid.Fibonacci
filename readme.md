@@ -25,3 +25,76 @@ I will be using [`MinVer`](https://github.com/adamralph/minver) to track version
     <Description>Iterator for Fibonacci sequence</Description>
 </PropertyGroup>
 ```
+
+## Step 5. Add .github workflows for build and publish
+
+### Build
+
+```yaml
+name: Build & Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
+```
+
+### Publish
+
+```yaml
+name: Publish
+
+on:
+  push:
+    tags:
+      - '**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
+      - name: Pack
+        run: dotnet pack -o ./nupkgs --no-restore --no-build
+      - name: Publish
+        run: dotnet nuget push ./nupkgs/*.nupkg --api-key ${{secrets.NugetApiKey}}  --skip-duplicate -s https://api.nuget.org/v3/index.json
+```
+
+## Step 6. Add NuGet API Key from NuGet.org Account
+
+Go to [NuGet](https://nuget.org) and get a key.
+
+## Step 7. Add A Tag and Push
+
+Add a tag and push. This should trigger the `publish` workflow.
