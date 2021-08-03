@@ -25,4 +25,4 @@ jobs:
       - name: Pack
         run: dotnet pack -o ./nupkgs --no-restore --no-build
       - name: Publish
-        run: dotnet nuget push ./nupkgs/*.nupkg --api-key ${{secrets.NugetApiKey}}  --skip-duplicate -s https://api.nuget.org/v3/index.json
+        run: dotnet nuget push ./nupkgs/*.nupkg --api-key ${{secrets.NUGET_API_KEY}}  --skip-duplicate -s https://api.nuget.org/v3/index.json
