@@ -97,4 +97,4 @@ Go to [NuGet](https://nuget.org) and get a key.
 
 ## Step 7. Add A Tag and Push
 
-Add a tag and push. This should trigger the `publish` workflow.
+Add a tag and push. This should trigger the `publish` workflow. Tags should be in the format of `0.0.0` to be recognized by MinVer.
